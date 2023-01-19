@@ -10,7 +10,8 @@ const db = new Sequelize({
   port: process.env.DB_PORT,
   password: process.env.DB_PASSWORD,     //tu propia contraseña
   dialect: "postgres",     //la base de datos que estamos usando
-  logging: false,      //silencia toda la informacion que da el sequelize en la consola
+  logging: false, //silencia toda la informacion que da el sequelize en la consola
+  dialectOptions: { ssl: { require: true, rejectUnauthorized: false } }   //esto soluciona el error en render
 })
 
 module.exports = db;
